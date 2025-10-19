@@ -11,6 +11,7 @@ def get_info(url):
     data = requests.get(url)
     return data.json()
 
+
 def export_to_csv(employee_id, username, todos):
     filename = f'{employee_id}.csv'
     with open(filename, mode='w') as file:
