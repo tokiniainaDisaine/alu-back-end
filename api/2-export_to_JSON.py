@@ -2,8 +2,8 @@
 """
 fgbvd
 """
-import requests
 import json
+import requests
 from sys import argv
 
 
