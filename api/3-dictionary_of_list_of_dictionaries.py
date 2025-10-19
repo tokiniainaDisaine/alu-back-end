@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/python3
 """
 fgbvd
@@ -30,7 +28,6 @@ def main():
     """
     fgbjfnd
     """
-
     url = "https://jsonplaceholder.typicode.com/users"
     response = requests.get(url)
     users = response.json()
