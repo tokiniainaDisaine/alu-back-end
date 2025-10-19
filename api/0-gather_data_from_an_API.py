@@ -7,6 +7,9 @@ from sys import argv
 
 
 def get_info(url):
+    """
+    asdfghngfds
+    """
     data = requests.get(url)
     return data.json()
 
@@ -15,22 +18,24 @@ def main(employee_id):
     """
     fgbjfnd
     """
-    employee_info_url = \
-    f"https://jsonplaceholder.typicode.com/users/{employee_id}/"
 
-    employee_todo_url = \
-    f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+    api_url = "https://jsonplaceholder.typicode.com/users"
+    employee_info_url = f"{api_url}/{employee_id}/"
+
+    employee_todo_url = f"{api_url}/{employee_id}/todos"
 
     employee_info = get_info(employee_info_url)
     employee_todo = get_info(employee_todo_url)
 
     employee_name = employee_info.get("name")
-    tasks = {todo.get("title"): \
-todo.get("completed") for todo in employee_todo}
+    tasks = ({todo.get("title"): 
+              todo.get("completed") 
+              for todo in employee_todo})
 
     task_number = len(tasks)
-    completed_tasks = [completed \
-    for completed in tasks.values() if completed]
+    completed_tasks = ([completed 
+                        for completed in tasks.values() 
+                        if completed])
     completed_tasks_count = len(completed_tasks)
 
     print(f"Employee {employee_name} is done with tasks\
