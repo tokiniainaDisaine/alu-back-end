@@ -1,45 +1,45 @@
 #!/usr/bin/python3
 """
-Python script that returns TODO list progress for a given employee ID
+fgbvd
 """
 import requests
 from sys import argv
 
 
-def get_employee_info(employee_id):
+def get_info(url):
     """
-    Get employee information by employee ID
+    asdfghngfds
     """
-    url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/'
-    response = requests.get(url)
-    return response.json()
-
-
-def get_employee_todos(employee_id):
-    """
-    Get the TODO list of the employee by employee ID
-    """
-    url = f'https://jsonplaceholder.typicode.com/users/{employee_id}/todos'
-    response = requests.get(url)
-    return response.json()
+    data = requests.get(url)
+    return data.json()
 
 
 def main(employee_id):
     """
-    Main function to fetch and display the TODO list progress of the employee
+    fgbjfnd
     """
-    employee = get_employee_info(employee_id)
-    employee_name = employee.get("name")
+    api_url = "https://jsonplaceholder.typicode.com/users"
+    employee_info_url = f"{api_url}/{employee_id}/"
 
-    emp_todos = get_employee_todos(employee_id)
-    tasks = {todo.get("title"): todo.get("completed") for todo in emp_todos}
+    employee_todo_url = f"{api_url}/{employee_id}/todos"
 
-    total_tasks = len(tasks)
-    completed_tasks = [completed for completed in tasks.values() if completed]
+    employee_info = get_info(employee_info_url)
+    employee_todo = get_info(employee_todo_url)
+
+    employee_name = employee_info.get("name")
+    tasks = ({todo.get("title"):
+              todo.get("completed")
+              for todo in employee_todo})
+
+    task_number = len(tasks)
+    completed_tasks = ([completed
+                        for completed in tasks.values()
+                        if completed])
     completed_tasks_count = len(completed_tasks)
 
-    print(f"Employee {employee_name} is done with tasks"
-          f"({completed_tasks_count}/{total_tasks}):")
+    print(f"Employee {employee_name} is done with tasks\
+    ({completed_tasks_count}/{task_number}):")
+
     for title, completed in tasks.items():
         if completed:
             print(f"\t {title}")
