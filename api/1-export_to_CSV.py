@@ -15,14 +15,14 @@ def export_to_csv(employee_id, username, todos):
     filename = f'{employee_id}.csv'
     with open(filename, mode='w') as file:
         file_writer = (csv.writer(
-                        file, 
-                        delimiter=',', 
+                        file,
+                        delimiter=',',
                         quoting=csv.QUOTE_ALL))
         for todo in todos:
             rowData = ([
-                employee_id, 
-                username, 
-                todo['completed'], 
+                employee_id,
+                username,
+                todo['completed'],
                 todo['title']])
             file_writer.writerow(rowData)
 
