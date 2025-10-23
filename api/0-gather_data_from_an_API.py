@@ -29,7 +29,7 @@ def main(employee_id):
                         if completed])
     completed_tasks_count = len(completed_tasks)
 
-    message_1 = "Employee {} is done with tasks".format(employee_name) 
+    message_1 = "Employee {} is done with tasks".format(employee_name)
     message_2 = "({}/{}):".format(completed_tasks_count, task_number)
 
     print(message_1 + message_2)
