@@ -6,25 +6,17 @@ import requests
 from sys import argv
 
 
-def get_info(url):
-    """
-    asdfghngfds
-    """
-    data = requests.get(url)
-    return data.json()
-
-
 def main(employee_id):
     """
     fgbjfnd
     """
     api_url = "https://jsonplaceholder.typicode.com/users"
-    employee_info_url = f"{api_url}/{employee_id}/"
 
+    employee_info_url = f"{api_url}/{employee_id}/"
     employee_todo_url = f"{api_url}/{employee_id}/todos"
 
-    employee_info = get_info(employee_info_url)
-    employee_todo = get_info(employee_todo_url)
+    employee_info = requests.get(employee_info_url).json()
+    employee_todo = requests.get(employee_todo_url)
 
     employee_name = employee_info.get("name")
     tasks = ({todo.get("title"):
@@ -37,12 +29,14 @@ def main(employee_id):
                         if completed])
     completed_tasks_count = len(completed_tasks)
 
-    print(f"Employee {employee_name} is done with tasks\
-    ({completed_tasks_count}/{task_number}):")
+    message_1 = "Employee {} is done with tasks".format(employee_name) 
+    message_2 = "({}/{}):".format(completed_tasks_count, task_number)
+
+    print(message_1 + message_2)
 
     for title, completed in tasks.items():
         if completed:
-            print(f"\t {title}")
+            print("\t {}".format(title))
 
 
 if __name__ == "__main__":
