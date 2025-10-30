@@ -16,7 +16,7 @@ def main(employee_id):
     employee_todo_url = f"{api_url}/{employee_id}/todos"
 
     employee_info = requests.get(employee_info_url).json()
-    employee_todo = requests.get(employee_todo_url)
+    employee_todo = requests.get(employee_todo_url).json()
 
     employee_name = employee_info.get("name")
     tasks = ({todo.get("title"):
